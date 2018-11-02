@@ -2,7 +2,7 @@ const { mongoose } = require('./mongoose.js');
 
 const Order = mongoose.model('Order', {
     userId: {
-        type: ObjectId,
+        type: Object,
         required: true,
         minlength: 1,
     },
@@ -16,7 +16,7 @@ const Order = mongoose.model('Order', {
         required: true,
         minlength: 1,
     },
-    userEmail: {
+    email: {
         type: String,
         required: true,
         minlength: 1,
@@ -33,4 +33,4 @@ const Order = mongoose.model('Order', {
     }
 });
 
-module.exports = { Phone };
+module.exports = { Order };
