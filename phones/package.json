@@ -2,10 +2,12 @@
   "name": "phones",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "docker-build": "docker build -t phones -f ./.Dockerfile .",
+    "docker-start": "docker run -it -p 3030:80 --rm --net store --name phone-api phones",
+    "test": "mocha **/**.test.js --timeout 10000"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +17,11 @@
     "express": "^4.16.4",
     "mongodb": "^3.1.8",
     "mongoose": "^5.3.8"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "mocha": "^5.2.0",
+    "supertest": "^3.3.0"
   }
 }
