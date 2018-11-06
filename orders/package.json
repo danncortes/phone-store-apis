@@ -2,10 +2,26 @@
   "name": "orders",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "docker-build": "docker build -t orders -f ./.Dockerfile .",
+    "docker-start": "docker run -it -p 3033:80 --rm --net store --name order-api orders",
+    "test": "mocha **/**.test.js --timeout 10000"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.8",
+    "mongoose": "^5.3.8"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "mocha": "^5.2.0",
+    "supertest": "^3.3.0"
+  }
 }
